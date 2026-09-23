@@ -13,7 +13,6 @@
   box-sizing: border-box;
 }
 
-/* ★追加：スムーススクロールと、固定ヘッダー分の余白調整 */
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
@@ -50,17 +49,15 @@ a {
   margin: 0 auto;
 }
 
-.header__logo {
+/* ★修正：テキストロゴのデザイン（サイズを小さく洗練された印象に） */
+.header__logo a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; /* 2.2remから大幅に縮小 */
   font-weight: 600;
-  letter-spacing: 0.1em;
-}
-
-.header__logo-img {
-  height: 45px;
-  width: auto;
-  vertical-align: middle;
-  mix-blend-mode: multiply;
-  filter: contrast(1.2) brightness(1.05);
+  font-style: italic; 
+  letter-spacing: 0.05em;
+  color: var(--color-text-main);
+  line-height: 1;
 }
 
 .header__right {
@@ -315,8 +312,9 @@ a {
     padding: 0.8rem 1.5rem;
   }
   
-  .header__logo-img {
-    height: 35px;
+  /* ★修正：スマホ時のテキストロゴも小さく */
+  .header__logo a {
+    font-size: 1.1rem; /* 1.8remから縮小 */
   }
 
   .header__right {
