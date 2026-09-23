@@ -13,6 +13,12 @@
   box-sizing: border-box;
 }
 
+/* ★追加：スムーススクロールと、固定ヘッダー分の余白調整 */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
 body {
   font-family: var(--font-serif);
   color: var(--color-text-main);
@@ -49,7 +55,6 @@ a {
   letter-spacing: 0.1em;
 }
 
-/* ロゴのサイズと背景馴染み調整 */
 .header__logo-img {
   height: 45px;
   width: auto;
@@ -58,7 +63,6 @@ a {
   filter: contrast(1.2) brightness(1.05);
 }
 
-/* 右側のアイコン＆メニュー群 */
 .header__right {
   display: flex;
   align-items: center;
@@ -81,7 +85,6 @@ a {
   font-family: sans-serif;
 }
 
-/* PC用メニュー */
 .header__nav {
   display: block;
   margin-left: 1rem;
@@ -94,7 +97,6 @@ a {
   font-size: 0.9rem;
 }
 
-/* スマホ用ハンバーガーメニュー（PCでは非表示） */
 .hamburger {
   display: none;
   background: none;
@@ -309,30 +311,55 @@ a {
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
   
-  /* ヘッダー周りを横一列に */
   .header__inner {
     padding: 0.8rem 1.5rem;
   }
   
-  /* スマホでのロゴサイズをさらに小さく */
   .header__logo-img {
     height: 35px;
   }
 
-  /* アイコンの間隔を調整 */
   .header__right {
     gap: 1rem;
   }
 
-  /* PC用メニューを消し、ハンバーガーメニューを表示 */
-  .header__nav {
-    display: none;
-  }
   .hamburger {
     display: block;
+    z-index: 101;
   }
 
-  /* その他のレイアウト調整 */
+  .hamburger.is-active span:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+  }
+  .hamburger.is-active span:nth-child(2) {
+    transform: translateY(-7.5px) rotate(-45deg);
+  }
+
+  .header__nav {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-bg);
+    padding: 2rem;
+    border-bottom: 1px solid var(--color-border);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .header__nav.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
   .hero__slider {
     height: 50vh;
   }

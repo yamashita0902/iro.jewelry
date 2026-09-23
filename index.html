@@ -7,31 +7,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Shippori+Mincho&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body>
 
-  <!-- ヘッダー -->
   <header class="header">
     <div class="header__inner">
       
-      <!-- 左側：ロゴ -->
       <div class="header__logo">
         <a href="#">
           <img src="image/logo.jpg" alt="iro." class="header__logo-img">
         </a>
       </div>
 
-      <!-- 右側：アイコン＆メニュー群 -->
       <div class="header__right">
-        <!-- 検索アイコン -->
         <a href="#" class="header__icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
           </svg>
         </a>
         
-        <!-- カートアイコン -->
         <a href="#" class="header__icon header__icon--cart">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
             <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
@@ -39,15 +34,13 @@
           <span class="cart-count">0</span>
         </a>
 
-        <!-- PC用メニュー（スマホでは非表示） -->
         <nav class="header__nav">
           <ul class="nav-list">
-            <li><a href="#">COLLECTION</a></li>
-            <li><a href="#">ABOUT</a></li>
+            <li><a href="#collection">COLLECTION</a></li>
+            <li><a href="#about">ABOUT</a></li>
           </ul>
         </nav>
 
-        <!-- スマホ用：ハンバーガーメニューアイコン -->
         <button class="hamburger" aria-label="メニューを開く">
           <span></span>
           <span></span>
@@ -58,7 +51,6 @@
   </header>
 
   <main>
-    <!-- ヒーローエリア -->
     <section class="hero">
       <div class="hero__slider">
         <div class="hero__slide" style="background-image: url('image/hero1.JPG');"></div>
@@ -66,7 +58,6 @@
       </div>
     </section>
 
-    <!-- ニュース -->
     <section class="news">
       <div class="news__inner">
         <p class="news__date">2026.09.23</p>
@@ -74,8 +65,7 @@
       </div>
     </section>
 
-    <!-- コンセプト -->
-    <section class="concept">
+    <section class="concept" id="about">
       <div class="concept__inner">
         <h2 class="concept__title">CONCEPT</h2>
         <p class="concept__text">
@@ -89,8 +79,7 @@
       </div>
     </section>
 
-    <!-- 商品一覧 (コレクション) -->
-    <section class="products">
+    <section class="products" id="collection">
       <div class="products__inner">
         <h2 class="section-title">COLLECTION</h2>
         
@@ -164,7 +153,6 @@
       </div>
     </section>
 
-    <!-- Instagram リンクセクション -->
     <section class="instagram">
       <div class="instagram__inner">
         <h2 class="section-title">INSTAGRAM</h2>
@@ -181,7 +169,6 @@
     </section>
   </main>
 
-  <!-- フッター -->
   <footer class="footer">
     <div class="footer__inner">
       <div class="footer__links">
@@ -193,5 +180,24 @@
     </div>
   </footer>
 
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('.header__nav');
+    const navLinks = document.querySelectorAll('.nav-list a');
+
+    // ハンバーガーアイコンをクリックした時の処理
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('is-active');
+      nav.classList.toggle('is-active');
+    });
+
+    // メニュー内のリンクをクリックした時にメニューを閉じる処理
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('is-active');
+        nav.classList.remove('is-active');
+      });
+    });
+  </script>
 </body>
 </html>
